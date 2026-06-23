@@ -1,0 +1,83 @@
+  <h1>Cafe by the Ruins</h1>
+
+  <div class="menu-layout">
+  
+    <div class="menu-content">
+      <h2>Breakfast</h2>
+      <div class="shop-grid">
+        @for(item of cartService.breakfastItems(); track item.id){
+          <app-product-card
+            [product]="item"
+            (add)="cartService.addToCart($event)">
+          </app-product-card>
+        }
+      </div>
+      
+      <h2>Coffee</h2>
+      <div class="shop-grid">
+        @for(item of cartService.coffeeItems(); track item.id){
+          <app-product-card
+            [product]="item"
+            (add)="cartService.addToCart($event)">
+          </app-product-card>
+        }
+      </div>
+      
+      <h2>Cold Coffee</h2>
+      <div class="shop-grid">
+        @for(item of cartService.coldCoffeeItems(); track item.id){
+          <app-product-card
+            [product]="item"
+            (add)="cartService.addToCart($event)">
+          </app-product-card>
+        }
+      </div>
+      
+      <h2>Tea & Infusions</h2>
+      <div class="shop-grid">
+        @for(item of cartService.teaItems(); track item.id){
+          <app-product-card
+            [product]="item"
+            (add)="cartService.addToCart($event)">
+          </app-product-card>
+        }
+      </div>
+      
+      <h2>Main Dishes</h2>
+      <div class="shop-grid">
+        @for(item of cartService.mainDishItems(); track item.id){
+          <app-product-card
+            [product]="item"
+            (add)="cartService.addToCart($event)">
+          </app-product-card>
+        }
+      </div>
+      
+      <h2>Desserts</h2>
+      <div class="shop-grid">
+        @for(item of cartService.dessertItems(); track item.id){
+          <app-product-card
+            [product]="item"
+            (add)="cartService.addToCart($event)">
+          </app-product-card>
+        }
+      </div>
+    </div>
+  
+
+    
+      <div class="cart-sidebar">
+    
+        <h2>🛒 Cart Summary</h2>
+    
+        <div class="cart-preview">
+          <h3>{{ cartService.cart().length }} Items</h3>
+          <a routerLink="/cart" routerLinkActive="active-link" class="view-cart-btn">Cart</a>
+        </div>
+    
+        <hr>
+    
+        <div class="total">
+          Total: ₱{{ cartService.totalPrice() }}
+        </div>
+ 

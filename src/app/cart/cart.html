@@ -1,0 +1,45 @@
+<div class="cart-container">
+
+  <h1>Shopping Cart</h1>
+
+  @for(item of cartService.cart(); track $index){
+
+    <div class="cart-card">
+
+      <img
+        [src]="item.image"
+        [alt]="item.name">
+
+      <div class="cart-info">
+
+        <h3>{{ item.name }}</h3>
+
+        <p>{{ item.description }}</p>
+
+        <div class="price">
+          ₱{{ item.price }}
+        </div>
+
+      </div>
+
+    </div>
+
+  } @empty {
+
+    <p class="empty-cart">
+      Cart is empty.
+    </p>
+
+  }
+
+  <div class="cart-total">
+    Total: ₱{{ cartService.totalPrice() }}
+  </div>
+
+  <button
+    class="checkout-btn"
+    (click)="cartService.clearCart()">
+    Clear Cart
+  </button>
+
+</div>
