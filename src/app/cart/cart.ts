@@ -1,11 +1,11 @@
-import { Component ,inject} from '@angular/core';
-import { cartService } from '../cart-service';
+import { Component, inject } from '@angular/core';
+import { CartService } from '../cart-service'; 
+
 @Component({
   selector: 'app-cart',
-  imports: [],
   templateUrl: './cart.html',
-  styleUrl: './cart.css',
+  styleUrls: ['./cart.css']
 })
-export class cart {
-  cartService = inject(cartService)
+export class Cart {
+  protected cartService = inject(CartService); 
 }
