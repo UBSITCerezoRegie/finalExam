@@ -1,0 +1,25 @@
+<h2>Add Product</h2>
+
+<input
+type="text"
+placeholder="Product Name"
+[(ngModel)]="product.name">
+
+<input
+type="number"
+placeholder="Price"
+[(ngModel)]="product.price">
+
+<textarea
+placeholder="Description"
+[(ngModel)]="product.description">
+</textarea>
+
+<input
+type="text"
+placeholder="Image URL"
+[(ngModel)]="product.image">
+
+<button (click)="saveProduct()">
+Save Product
+</button>
