@@ -1,22 +1,13 @@
-<div class="item-card">
+<h2>Add Product</h2>
 
-    <img
-      class="item-image"
-      [src]="product()?.image"
-      [alt]="product()?.name">
-  
-    <h3>{{ product()?.name }}</h3>
-    
-    <p class="description">
-        {{ product()?.description }}
-      </p>
-    <p class="price">
-      ₱{{ product()?.price }}
-    </p>
+<input type="text" placeholder="Product Name">
 
-  
-    <button (click)="addToCart()">
-      Add to Cart
-    </button>
-  
-  </div>
+<input type="number" placeholder="Price">
+
+<textarea placeholder="Description"></textarea>
+
+<input type="text" placeholder="Image URL">
+
+<button>
+  Save Product
+</button>
