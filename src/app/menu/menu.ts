@@ -1,5 +1,5 @@
 import { Component ,inject} from '@angular/core';
-import { cartService } from '../cart-service';
+import { CartService } from '../cart-service';
 import { ProductCard } from '../product-card/product-card';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -10,5 +10,5 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './menu.css',
 })
 export class Menu {
-  cartService = inject(cartService);
+  cartService = inject(CartService);
 }
