@@ -37,9 +37,15 @@
   </div>
 
   <button
+  class="checkout-btn"
+  routerLink="/checkout" routerLinkActive="active-link">
+  Checkout
+</button>
+
+
+  <button
     class="checkout-btn"
     (click)="cartService.clearCart()">
     Clear Cart
   </button>
-
 </div>

@@ -21,7 +21,11 @@ export class CartService {
   addToCart(item: any) {
     this.cartItems.update(current => [...current, item]);
   }
-
+removeFromCart(item: any) {
+  this.cartItems.update(items =>
+    items.filter(cartItem => cartItem !== item)
+  );
+}
   clearCart() {
     this.cartItems.set([]);
   }
