@@ -1,0 +1,97 @@
+/* Color Palette: Coffee Theme */
+:root {
+  --primary-espresso: #4A2C11;
+  --secondary-latte: #D2A679;
+  --cream-bg: #F9F6F0;
+  --white: #FFFFFF;
+  --danger-alert: #C0392B;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background-color: var(--cream-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Dashboard Title */
+.dashboard-container h2 {
+  color: var(--primary-espresso);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  border-bottom: 2px solid var(--secondary-latte);
+  padding-bottom: 1rem;
+}
+
+/* Action Button Grid */
+.dashboard-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Base Button Styles */
+.btn-action {
+  background-color: var(--white);
+  color: var(--primary-espresso);
+  border: 2px solid var(--secondary-latte);
+  padding: 1.2rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+}
+
+/* Button Hover Effects */
+.btn-action:hover {
+  background-color: var(--secondary-latte);
+  color: var(--white);
+  transform: translateY(-3px);
+}
+
+/* Individual Button Accent Colors */
+.btn-action.add {
+  border-color: #27AE60;
+  color: #27AE60;
+}
+.btn-action.add:hover {
+  background-color: #27AE60;
+  color: var(--white);
+}
+
+.btn-action.edit {
+  border-color: var(--secondary-latte);
+  color: var(--primary-espresso);
+}
+.btn-action.edit:hover {
+  background-color: var(--secondary-latte);
+  color: var(--primary-espresso);
+}
+
+.btn-action.delete {
+  border-color: var(--danger-alert);
+  color: var(--danger-alert);
+}
+.btn-action.delete:hover {
+  background-color: var(--danger-alert);
+  color: var(--white);
+}
+
+.btn-action.orders {
+  border-color: var(--primary-espresso);
+  background-color: var(--primary-espresso);
+  color: var(--white);
+}
+.btn-action.orders:hover {
+  background-color: var(--secondary-latte);
+  border-color: var(--secondary-latte);
+  color: var(--primary-espresso);
+}

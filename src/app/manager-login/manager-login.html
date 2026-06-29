@@ -1,7 +1,17 @@
 <h2>Manager Login</h2>
 
-<form>
-  <input type="text" placeholder="Username">
-  <input type="password" placeholder="Password">
+<form (ngSubmit)="login()">
+  <input
+    type="text"
+    placeholder="Username"
+    name="username"
+    [(ngModel)]="username">
+
+  <input
+    type="password"
+    placeholder="Password"
+    name="password"
+    [(ngModel)]="password">
+
   <button type="submit">Login</button>
 </form>
