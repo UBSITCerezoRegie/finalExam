@@ -29,7 +29,7 @@ const Coffee = mongoose.model('Coffee', new mongoose.Schema({
 }));
 
 
-app.post('/api/coffee', async (req, res) => {
+app.post('/api/coffees', async (req, res) => {
     try {
         const item = new Coffee(req.body);
         await item.save();
@@ -44,7 +44,7 @@ app.post('/api/coffee', async (req, res) => {
     }
 });
 
-app.get('/api/coffee', async (req, res) => {
+app.get('/api/coffees', async (req, res) => {
     try {
         const menu = await Coffee.find();
 
@@ -59,7 +59,7 @@ app.get('/api/coffee', async (req, res) => {
 });
 
 
-app.put('/api/coffee/:id', async (req, res) => {
+app.put('/api/coffees/:id', async (req, res) => {
     try {
         const updatedCoffee = await Coffee.findByIdAndUpdate(
             req.params.id,
@@ -75,7 +75,7 @@ app.put('/api/coffee/:id', async (req, res) => {
     }
 });
 
-app.delete('/api/coffee/:id', async (req, res) => {
+app.delete('/api/coffees/:id', async (req, res) => {
     try {
         await Coffee.findByIdAndDelete(req.params.id);
 

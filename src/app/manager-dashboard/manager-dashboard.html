@@ -1,9 +1,87 @@
 <div class="dashboard-container">
-  <h2>Manager Dashboard</h2>
-  <div class="dashboard-actions">
-    <button class="btn-action add">Add Product</button>
-    <button class="btn-action edit">Edit Product</button>
-    <button class="btn-action delete">Delete Product</button>
-    <button class="btn-action orders" routerLink="/orders">View Orders</button>
+  <h2>{{ editingId() ? 'Update coffee' : 'Add coffee' }}</h2>
+
+  <form [formGroup]="coffeeForm" (ngSubmit)="onSubmit()" class="coffee-form">
+
+    <div class="form-group">
+      <label for="name">coffee Name</label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        placeholder="e.g. Caramel Latte"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category</label>
+      <input
+        id="category"
+        type="text"
+        formControlName="category"
+        placeholder="e.g. coffee"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input
+        id="price"
+        type="number"
+        formControlName="price"
+      />
+    </div>
+
+    <div class="form-actions">
+      <button
+        type="submit"
+        [disabled]="coffeeForm.invalid"
+        class="btn-submit"
+      >
+        {{ editingId() ? 'Confirm Update' : 'Add coffee' }}
+      </button>
+
+      @if (editingId()) {
+        <button
+          type="button"
+          (click)="cancelEdit()"
+          class="btn-cancel"
+        >
+          Cancel
+        </button>
+      }
+    </div>
+  </form>
+
+  <hr />
+
+  <h3>Current Menu</h3>
+
+  <div class="coffee-grid">
+    @for (p of coffeeService.coffeeList(); track p._id) {
+      <div class="coffee-card">
+        <div class="card-info">
+          <strong>{{ p.name }}</strong>
+          <p>₱{{ p.price }}</p>
+          <p>{{ p.category }}</p>
+        </div>
+
+        <div class="card-actions">
+          <button
+            (click)="startEdit(p)"
+            class="btn-edit"
+          >
+            Edit
+          </button>
+
+          <button
+            (click)="deletecoffee(p._id)"
+            class="btn-delete"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    }
   </div>
 </div>
