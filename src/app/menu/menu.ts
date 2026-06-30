@@ -1,5 +1,6 @@
-import { Component ,inject} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CartService } from '../cart-service';
+import { CoffeeService } from '../coffee.service';
 import { ProductCard } from '../product-card/product-card';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -9,6 +10,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './menu.html',
   styleUrl: './menu.css',
 })
-export class Menu {
+export class Menu implements OnInit {
+
   cartService = inject(CartService);
+  coffeeService = inject(CoffeeService);
+
+  ngOnInit() {
+    this.coffeeService.fetchCoffee();
+  }
 }
