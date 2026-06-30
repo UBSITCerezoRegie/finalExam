@@ -1,7 +1,7 @@
 <div class="dashboard-container">
   <h2>{{ editingId() ? 'Update coffee' : 'Add coffee' }}</h2>
 
-  <form [formGroup]="coffeeForm" (ngSubmit)="onSubmit()" class="coffee-form">
+  <form [formGroup]="CoffeeForm" (ngSubmit)="onSubmit()" class="coffee-form">
 
     <div class="form-group">
       <label for="name">coffee Name</label>
@@ -35,7 +35,7 @@
     <div class="form-actions">
       <button
         type="submit"
-        [disabled]="coffeeForm.invalid"
+        [disabled]="CoffeeForm.invalid"
         class="btn-submit"
       >
         {{ editingId() ? 'Confirm Update' : 'Add coffee' }}
@@ -58,7 +58,7 @@
   <h3>Current Menu</h3>
 
   <div class="coffee-grid">
-    @for (p of coffeeService.coffeeList(); track p._id) {
+    @for (p of CoffeeService.coffeeList(); track p._id) {
       <div class="coffee-card">
         <div class="card-info">
           <strong>{{ p.name }}</strong>
@@ -75,7 +75,7 @@
           </button>
 
           <button
-            (click)="deletecoffee(p._id)"
+            (click)="deleteCoffee(p._id)"
             class="btn-delete"
           >
             Delete

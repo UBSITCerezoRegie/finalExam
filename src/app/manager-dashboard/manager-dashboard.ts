@@ -1,15 +1,9 @@
 import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  signal,
-  OnInit
+  ChangeDetectionStrategy, Component, inject, signal, OnInit
 } from '@angular/core';
 
 import {
-  FormBuilder,
-  ReactiveFormsModule,
-  Validators
+  FormBuilder, ReactiveFormsModule,  Validators
 } from '@angular/forms';
 
 import { CoffeeService } from '../coffee.service';
@@ -17,8 +11,8 @@ import { CoffeeService } from '../coffee.service';
   selector: 'app-manager-dashboard',
   standalone: true,
   imports: [ReactiveFormsModule],
-  templateUrl: './manager-dashboard.html',
-  styleUrl: './manager-dashboard.css',
+  templateUrl: 'manager-dashboard.html',
+  styleUrl: 'manager-dashboard.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ManagerDashboard implements OnInit {
@@ -30,7 +24,8 @@ export class ManagerDashboard implements OnInit {
 
   editingId = signal<string | null>(null);
 
-  offeeForm = this.formBuilder.nonNullable.group({
+ 
+  CoffeeForm = this.formBuilder.nonNullable.group({
     name: ['', Validators.required],
     category: ['', Validators.required],
     price: [1, [Validators.required, Validators.min(1)]],
