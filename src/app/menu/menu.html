@@ -1,0 +1,35 @@
+<h2>Breakfast</h2>
+
+@for(item of coffeeService.breakfastItems(); track item._id) {
+  <app-product-card [product]="item"></app-product-card>
+}
+
+<h2>Coffee</h2>
+
+@for(item of coffeeService.coffeeItems(); track item._id) {
+  <app-product-card [product]="item"></app-product-card>
+}
+
+<h2>Cold Coffee</h2>
+
+@for(item of coffeeService.coldCoffeeItems(); track item._id) {
+  <app-product-card [product]="item"></app-product-card>
+}
+
+<h2>Tea</h2>
+
+@for(item of coffeeService.teaItems(); track item._id) {
+  <app-product-card [product]="item"></app-product-card>
+}
+
+<h2>Main Dish</h2>
+
+@for(item of coffeeService.mainDishItems(); track item._id) {
+  <app-product-card [product]="item"></app-product-card>
+}
+
+<h2>Dessert</h2>
+
+@for(item of coffeeService.dessertItems(); track item._id) {
+  <app-product-card [product]="item"></app-product-card>
+}
