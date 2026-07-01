@@ -8,13 +8,31 @@
     <div class="coffee-grid">
       @for (p of CoffeeService.breakfastItems(); track p._id) {
         <div class="coffee-card">
+
           <strong>{{ p.name }}</strong>
-          <p>₱{{ p.price }}</p>
+
+          <p class="description">
+            {{ p.description }}
+          </p>
+
+          <p class="price">
+            ₱{{ p.price }}
+          </p>
 
           <div class="card-actions">
-            <button class="btn-edit" (click)="startEdit(p)">Edit</button>
-            <button class="btn-delete" (click)="deleteCoffee(p._id)">Delete</button>
+            <button
+              class="btn-edit"
+              (click)="startEdit(p)">
+              Edit
+            </button>
+
+            <button
+              class="btn-delete"
+              (click)="deleteCoffee(p._id)">
+              Delete
+            </button>
           </div>
+
         </div>
       }
     </div>
@@ -23,13 +41,27 @@
     <div class="coffee-grid">
       @for (p of CoffeeService.coffeeItems(); track p._id) {
         <div class="coffee-card">
+
           <strong>{{ p.name }}</strong>
-          <p>₱{{ p.price }}</p>
+
+          <p class="description">
+            {{ p.description }}
+          </p>
+
+          <p class="price">
+            ₱{{ p.price }}
+          </p>
 
           <div class="card-actions">
-            <button class="btn-edit" (click)="startEdit(p)">Edit</button>
-            <button class="btn-delete" (click)="deleteCoffee(p._id)">Delete</button>
+            <button class="btn-edit" (click)="startEdit(p)">
+              Edit
+            </button>
+
+            <button class="btn-delete" (click)="deleteCoffee(p._id)">
+              Delete
+            </button>
           </div>
+
         </div>
       }
     </div>
@@ -38,13 +70,27 @@
     <div class="coffee-grid">
       @for (p of CoffeeService.coldCoffeeItems(); track p._id) {
         <div class="coffee-card">
+
           <strong>{{ p.name }}</strong>
-          <p>₱{{ p.price }}</p>
+
+          <p class="description">
+            {{ p.description }}
+          </p>
+
+          <p class="price">
+            ₱{{ p.price }}
+          </p>
 
           <div class="card-actions">
-            <button class="btn-edit" (click)="startEdit(p)">Edit</button>
-            <button class="btn-delete" (click)="deleteCoffee(p._id)">Delete</button>
+            <button class="btn-edit" (click)="startEdit(p)">
+              Edit
+            </button>
+
+            <button class="btn-delete" (click)="deleteCoffee(p._id)">
+              Delete
+            </button>
           </div>
+
         </div>
       }
     </div>
@@ -53,13 +99,27 @@
     <div class="coffee-grid">
       @for (p of CoffeeService.teaItems(); track p._id) {
         <div class="coffee-card">
+
           <strong>{{ p.name }}</strong>
-          <p>₱{{ p.price }}</p>
+
+          <p class="description">
+            {{ p.description }}
+          </p>
+
+          <p class="price">
+            ₱{{ p.price }}
+          </p>
 
           <div class="card-actions">
-            <button class="btn-edit" (click)="startEdit(p)">Edit</button>
-            <button class="btn-delete" (click)="deleteCoffee(p._id)">Delete</button>
+            <button class="btn-edit" (click)="startEdit(p)">
+              Edit
+            </button>
+
+            <button class="btn-delete" (click)="deleteCoffee(p._id)">
+              Delete
+            </button>
           </div>
+
         </div>
       }
     </div>
@@ -68,13 +128,27 @@
     <div class="coffee-grid">
       @for (p of CoffeeService.mainDishItems(); track p._id) {
         <div class="coffee-card">
+
           <strong>{{ p.name }}</strong>
-          <p>₱{{ p.price }}</p>
+
+          <p class="description">
+            {{ p.description }}
+          </p>
+
+          <p class="price">
+            ₱{{ p.price }}
+          </p>
 
           <div class="card-actions">
-            <button class="btn-edit" (click)="startEdit(p)">Edit</button>
-            <button class="btn-delete" (click)="deleteCoffee(p._id)">Delete</button>
+            <button class="btn-edit" (click)="startEdit(p)">
+              Edit
+            </button>
+
+            <button class="btn-delete" (click)="deleteCoffee(p._id)">
+              Delete
+            </button>
           </div>
+
         </div>
       }
     </div>
@@ -83,13 +157,27 @@
     <div class="coffee-grid">
       @for (p of CoffeeService.dessertItems(); track p._id) {
         <div class="coffee-card">
+
           <strong>{{ p.name }}</strong>
-          <p>₱{{ p.price }}</p>
+
+          <p class="description">
+            {{ p.description }}
+          </p>
+
+          <p class="price">
+            ₱{{ p.price }}
+          </p>
 
           <div class="card-actions">
-            <button class="btn-edit" (click)="startEdit(p)">Edit</button>
-            <button class="btn-delete" (click)="deleteCoffee(p._id)">Delete</button>
+            <button class="btn-edit" (click)="startEdit(p)">
+              Edit
+            </button>
+
+            <button class="btn-delete" (click)="deleteCoffee(p._id)">
+              Delete
+            </button>
           </div>
+
         </div>
       }
     </div>
@@ -107,7 +195,25 @@
         <input
           type="text"
           formControlName="name"
-          placeholder="Caramel Latte">
+          placeholder="eg.. Caramel Latte">
+      </div>
+      <div class="form-group">
+        <label>Image URL</label>
+      
+        <input
+          type="text"
+          formControlName="image"
+          placeholder="https://example.com/coffee.jpg">
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+
+        <textarea
+          rows="4"
+          formControlName="description"
+          placeholder="Enter product description">
+        </textarea>
       </div>
 
       <div class="form-group">
@@ -126,6 +232,7 @@
 
       <div class="form-group">
         <label>Price</label>
+
         <input
           type="number"
           formControlName="price">

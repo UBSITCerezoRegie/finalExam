@@ -28,7 +28,9 @@ export class ManagerDashboard implements OnInit {
   CoffeeForm = this.formBuilder.nonNullable.group({
     name: ['', Validators.required],
     category: ['', Validators.required],
+    description: [''],
     price: [1, [Validators.required, Validators.min(1)]],
+    image: ['']
   });
 
   ngOnInit() {
