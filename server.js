@@ -23,9 +23,8 @@ const User = mongoose.model('User', new mongoose.Schema({
 
 const Coffee = mongoose.model('Coffee', new mongoose.Schema({
     name: String,
-    type: String,
-    price: Number,
-    size: String
+    category: String,
+    price: Number
 }));
 
 

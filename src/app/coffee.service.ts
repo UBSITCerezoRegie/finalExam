@@ -1,4 +1,4 @@
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, inject, signal ,computed} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -11,7 +11,29 @@ export class CoffeeService {
 
   // Reactive state management using signals
   coffeeList = signal<any[]>([]);
+  breakfastItems = computed(() =>
+    this.coffeeList().filter(item => item.category === 'breakfast')
+  );
 
+  coffeeItems = computed(() =>
+    this.coffeeList().filter(item => item.category === 'coffee')
+  );
+
+  coldCoffeeItems = computed(() =>
+    this.coffeeList().filter(item => item.category === 'coldCoffee')
+  );
+
+  teaItems = computed(() =>
+    this.coffeeList().filter(item => item.category === 'tea')
+  );
+
+  mainDishItems = computed(() =>
+    this.coffeeList().filter(item => item.category === 'mainDish')
+  );
+
+  dessertItems = computed(() =>
+    this.coffeeList().filter(item => item.category === 'dessert')
+  );
   fetchCoffee() {
     this.http
       .get<any[]>(this.apiUrl)

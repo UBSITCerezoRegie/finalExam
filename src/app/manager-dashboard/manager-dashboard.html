@@ -15,12 +15,38 @@
 
     <div class="form-group">
       <label for="category">Category</label>
-      <input
+    
+      <select
         id="category"
-        type="text"
-        formControlName="category"
-        placeholder="e.g. coffee"
-      />
+        formControlName="category">
+    
+        <option value="">Select Category</option>
+    
+        <option value="breakfast">
+          Breakfast
+        </option>
+    
+        <option value="coffee">
+          Coffee
+        </option>
+    
+        <option value="coldCoffee">
+          Cold Coffee
+        </option>
+    
+        <option value="tea">
+          Tea
+        </option>
+    
+        <option value="mainDish">
+          Main Dish
+        </option>
+    
+        <option value="dessert">
+          Dessert
+        </option>
+    
+      </select>
     </div>
 
     <div class="form-group">
