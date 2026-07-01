@@ -1,97 +1,183 @@
-/* Color Palette: Coffee Theme */
-:root {
-  --primary-espresso: #4A2C11;
-  --secondary-latte: #D2A679;
-  --cream-bg: #F9F6F0;
-  --white: #FFFFFF;
-  --danger-alert: #C0392B;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
-}
-
-/* Dashboard Container */
 .dashboard-container {
-  max-width: 900px;
-  margin: 3rem auto;
-  padding: 2.5rem;
-  background-color: var(--cream-bg);
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+  max-width: 1500px;
+  margin: 30px auto;
+  padding: 20px;
 
-/* Dashboard Title */
-.dashboard-container h2 {
-  color: var(--primary-espresso);
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  text-align: center;
-  border-bottom: 2px solid var(--secondary-latte);
-  padding-bottom: 1rem;
-}
-
-/* Action Button Grid */
-.dashboard-actions {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: 1fr 350px;
+  gap: 30px;
 }
 
-/* Base Button Styles */
-.btn-action {
-  background-color: var(--white);
-  color: var(--primary-espresso);
-  border: 2px solid var(--secondary-latte);
-  padding: 1.2rem 1rem;
-  font-size: 1.1rem;
+.dashboard-menu {
+  min-width: 0;
+}
+
+.dashboard-form {
+  position: sticky;
+  top: 90px;
+
+  height: fit-content;
+
+  background: linear-gradient(
+    180deg,
+    #fff8f0,
+    #f3e5d0
+  );
+
+  border-radius: 20px;
+
+  padding: 25px;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.12);
+
+  border: 2px solid #d8b892;
+}
+
+.dashboard-form h2 {
+  color: #5a3d2b;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+
+  color: #5a3d2b;
   font-weight: 600;
-  border-radius: 8px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+
+  border-radius: 10px;
+  border: 1px solid #d8b892;
+
+  font-size: 1rem;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #6f4e37;
+  color: white;
+
+  font-size: 1rem;
+  font-weight: bold;
+
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: var(--shadow);
 }
 
-/* Button Hover Effects */
-.btn-action:hover {
-  background-color: var(--secondary-latte);
-  color: var(--white);
-  transform: translateY(-3px);
+.btn-submit:hover {
+  background: #5a3d2b;
 }
 
-/* Individual Button Accent Colors */
-.btn-action.add {
-  border-color: #27AE60;
-  color: #27AE60;
-}
-.btn-action.add:hover {
-  background-color: #27AE60;
-  color: var(--white);
+.dashboard-menu h2 {
+  color: #5a3d2b;
+  margin-bottom: 25px;
 }
 
-.btn-action.edit {
-  border-color: var(--secondary-latte);
-  color: var(--primary-espresso);
-}
-.btn-action.edit:hover {
-  background-color: var(--secondary-latte);
-  color: var(--primary-espresso);
+.dashboard-menu h3 {
+  color: #6f4e37;
+
+  margin-top: 30px;
+  margin-bottom: 15px;
+
+  border-left: 6px solid #c49a6c;
+  padding-left: 12px;
 }
 
-.btn-action.delete {
-  border-color: var(--danger-alert);
-  color: var(--danger-alert);
-}
-.btn-action.delete:hover {
-  background-color: var(--danger-alert);
-  color: var(--white);
+.coffee-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px;
 }
 
-.btn-action.orders {
-  border-color: var(--primary-espresso);
-  background-color: var(--primary-espresso);
-  color: var(--white);
+.coffee-card {
+  background: #fff;
+
+  border-radius: 18px;
+
+  padding: 18px;
+
+  box-shadow:
+    0 5px 15px rgba(0,0,0,.08);
+
+  border-top: 5px solid #8b5e3c;
+
+  transition: .3s ease;
 }
-.btn-action.orders:hover {
-  background-color: var(--secondary-latte);
-  border-color: var(--secondary-latte);
-  color: var(--primary-espresso);
+
+.coffee-card:hover {
+  transform: translateY(-4px);
+}
+
+.coffee-card strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #4b2e1e;
+  margin-bottom: 10px;
+}
+
+.coffee-card p {
+  color: #8b5e3c;
+  font-weight: bold;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn-edit,
+.btn-delete {
+  flex: 1;
+
+  border: none;
+  border-radius: 10px;
+
+  padding: 10px;
+
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-edit {
+  background: #8b5e3c;
+  color: white;
+}
+
+.btn-edit:hover {
+  background: #6f4e37;
+}
+
+.btn-delete {
+  background: #d7ccc8;
+  color: #4b2e1e;
+}
+
+.btn-delete:hover {
+  background: #bcaaa4;
+}
+
+@media (max-width: 900px) {
+  .dashboard-container {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-form {
+    position: static;
+  }
 }

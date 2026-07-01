@@ -1,113 +1,146 @@
 <div class="dashboard-container">
-  <h2>{{ editingId() ? 'Update coffee' : 'Add item' }}</h2>
 
-  <form [formGroup]="CoffeeForm" (ngSubmit)="onSubmit()" class="coffee-form">
+  <section class="dashboard-menu">
 
-    <div class="form-group">
-      <label for="name">coffee Name</label>
-      <input
-        id="name"
-        type="text"
-        formControlName="name"
-        placeholder="e.g. Caramel Latte"
-      />
-    </div>
+    <h2>Current Menu</h2>
 
-    <div class="form-group">
-      <label for="category">Category</label>
-    
-      <select
-        id="category"
-        formControlName="category">
-    
-        <option value="">Select Category</option>
-    
-        <option value="breakfast">
-          Breakfast
-        </option>
-    
-        <option value="coffee">
-          Coffee
-        </option>
-    
-        <option value="coldCoffee">
-          Cold Coffee
-        </option>
-    
-        <option value="tea">
-          Tea
-        </option>
-    
-        <option value="mainDish">
-          Main Dish
-        </option>
-    
-        <option value="dessert">
-          Dessert
-        </option>
-    
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="price">Price</label>
-      <input
-        id="price"
-        type="number"
-        formControlName="price"
-      />
-    </div>
-
-    <div class="form-actions">
-      <button
-        type="submit"
-        [disabled]="CoffeeForm.invalid"
-        class="btn-submit"
-      >
-        {{ editingId() ? 'Confirm Update' : 'Add coffee' }}
-      </button>
-
-      @if (editingId()) {
-        <button
-          type="button"
-          (click)="cancelEdit()"
-          class="btn-cancel"
-        >
-          Cancel
-        </button>
-      }
-    </div>
-  </form>
-
-  <hr />
-
-  <h3>Current Menu</h3>
-
-  <div class="coffee-grid">
-    @for (p of CoffeeService.coffeeList(); track p._id) {
-      <div class="coffee-card">
-        <div class="card-info">
+    <h3>Breakfast</h3>
+    <div class="coffee-grid">
+      @for (p of CoffeeService.breakfastItems(); track p._id) {
+        <div class="coffee-card">
           <strong>{{ p.name }}</strong>
           <p>₱{{ p.price }}</p>
-          <p>{{ p.category }}</p>
-        </div>
 
-        <div class="card-actions">
-          <button
-            (click)="startEdit(p)"
-            class="btn-edit"
-          >
-            Edit
-          </button>
-
-          <button
-            (click)="deleteCoffee(p._id)"
-            class="btn-delete"
-          >
-            Delete
-          </button>
+          <div class="card-actions">
+            <button class="btn-edit" (click)="startEdit(p)">Edit</button>
+            <button class="btn-delete" (click)="deleteCoffee(p._id)">Delete</button>
+          </div>
         </div>
+      }
+    </div>
+
+    <h3>Coffee</h3>
+    <div class="coffee-grid">
+      @for (p of CoffeeService.coffeeItems(); track p._id) {
+        <div class="coffee-card">
+          <strong>{{ p.name }}</strong>
+          <p>₱{{ p.price }}</p>
+
+          <div class="card-actions">
+            <button class="btn-edit" (click)="startEdit(p)">Edit</button>
+            <button class="btn-delete" (click)="deleteCoffee(p._id)">Delete</button>
+          </div>
+        </div>
+      }
+    </div>
+
+    <h3>Cold Coffee</h3>
+    <div class="coffee-grid">
+      @for (p of CoffeeService.coldCoffeeItems(); track p._id) {
+        <div class="coffee-card">
+          <strong>{{ p.name }}</strong>
+          <p>₱{{ p.price }}</p>
+
+          <div class="card-actions">
+            <button class="btn-edit" (click)="startEdit(p)">Edit</button>
+            <button class="btn-delete" (click)="deleteCoffee(p._id)">Delete</button>
+          </div>
+        </div>
+      }
+    </div>
+
+    <h3>Tea</h3>
+    <div class="coffee-grid">
+      @for (p of CoffeeService.teaItems(); track p._id) {
+        <div class="coffee-card">
+          <strong>{{ p.name }}</strong>
+          <p>₱{{ p.price }}</p>
+
+          <div class="card-actions">
+            <button class="btn-edit" (click)="startEdit(p)">Edit</button>
+            <button class="btn-delete" (click)="deleteCoffee(p._id)">Delete</button>
+          </div>
+        </div>
+      }
+    </div>
+
+    <h3>Main Dish</h3>
+    <div class="coffee-grid">
+      @for (p of CoffeeService.mainDishItems(); track p._id) {
+        <div class="coffee-card">
+          <strong>{{ p.name }}</strong>
+          <p>₱{{ p.price }}</p>
+
+          <div class="card-actions">
+            <button class="btn-edit" (click)="startEdit(p)">Edit</button>
+            <button class="btn-delete" (click)="deleteCoffee(p._id)">Delete</button>
+          </div>
+        </div>
+      }
+    </div>
+
+    <h3>Dessert</h3>
+    <div class="coffee-grid">
+      @for (p of CoffeeService.dessertItems(); track p._id) {
+        <div class="coffee-card">
+          <strong>{{ p.name }}</strong>
+          <p>₱{{ p.price }}</p>
+
+          <div class="card-actions">
+            <button class="btn-edit" (click)="startEdit(p)">Edit</button>
+            <button class="btn-delete" (click)="deleteCoffee(p._id)">Delete</button>
+          </div>
+        </div>
+      }
+    </div>
+
+  </section>
+
+  <aside class="dashboard-form">
+
+    <h2>{{ editingId() ? 'Update Product' : 'Add Product' }}</h2>
+
+    <form [formGroup]="CoffeeForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label>Product Name</label>
+        <input
+          type="text"
+          formControlName="name"
+          placeholder="Caramel Latte">
       </div>
-    }
-  </div>
+
+      <div class="form-group">
+        <label>Category</label>
+
+        <select formControlName="category">
+          <option value="">Select Category</option>
+          <option value="breakfast">Breakfast</option>
+          <option value="coffee">Coffee</option>
+          <option value="coldCoffee">Cold Coffee</option>
+          <option value="tea">Tea</option>
+          <option value="mainDish">Main Dish</option>
+          <option value="dessert">Dessert</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Price</label>
+        <input
+          type="number"
+          formControlName="price">
+      </div>
+
+      <button
+        class="btn-submit"
+        type="submit">
+
+        {{ editingId() ? 'Update Product' : 'Add Product' }}
+
+      </button>
+
+    </form>
+
+  </aside>
+
 </div>

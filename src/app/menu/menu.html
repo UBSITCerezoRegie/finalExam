@@ -1,35 +1,91 @@
-<h2>Breakfast</h2>
+<div class="menu-layout">
 
-@for(item of coffeeService.breakfastItems(); track item._id) {
-  <app-product-card [product]="item"></app-product-card>
-}
-
-<h2>Coffee</h2>
-
-@for(item of coffeeService.coffeeItems(); track item._id) {
-  <app-product-card [product]="item"></app-product-card>
-}
-
-<h2>Cold Coffee</h2>
-
-@for(item of coffeeService.coldCoffeeItems(); track item._id) {
-  <app-product-card [product]="item"></app-product-card>
-}
-
-<h2>Tea</h2>
-
-@for(item of coffeeService.teaItems(); track item._id) {
-  <app-product-card [product]="item"></app-product-card>
-}
-
-<h2>Main Dish</h2>
-
-@for(item of coffeeService.mainDishItems(); track item._id) {
-  <app-product-card [product]="item"></app-product-card>
-}
-
-<h2>Dessert</h2>
-
-@for(item of coffeeService.dessertItems(); track item._id) {
-  <app-product-card [product]="item"></app-product-card>
-}
+    <div class="menu-content">
+  
+      <h1>Cafe Ruins Menu</h1>
+  
+      <h2>Breakfast</h2>
+      <div class="shop-grid">
+        @for(item of coffeeService.breakfastItems(); track item._id) {
+          <app-product-card
+            [product]="item"
+            (add)="cartService.addToCart($event)">
+          </app-product-card>
+        }
+      </div>
+  
+      <h2>Coffee</h2>
+      <div class="shop-grid">
+        @for(item of coffeeService.coffeeItems(); track item._id) {
+          <app-product-card
+            [product]="item"
+            (add)="cartService.addToCart($event)">
+          </app-product-card>
+        }
+      </div>
+  
+      <h2>Cold Coffee</h2>
+      <div class="shop-grid">
+        @for(item of coffeeService.coldCoffeeItems(); track item._id) {
+          <app-product-card
+            [product]="item"
+            (add)="cartService.addToCart($event)">
+          </app-product-card>
+        }
+      </div>
+  
+      <h2>Tea</h2>
+      <div class="shop-grid">
+        @for(item of coffeeService.teaItems(); track item._id) {
+          <app-product-card
+            [product]="item"
+            (add)="cartService.addToCart($event)">
+          </app-product-card>
+        }
+      </div>
+  
+      <h2>Main Dish</h2>
+      <div class="shop-grid">
+        @for(item of coffeeService.mainDishItems(); track item._id) {
+          <app-product-card
+            [product]="item"
+            (add)="cartService.addToCart($event)">
+          </app-product-card>
+        }
+      </div>
+  
+      <h2>Dessert</h2>
+      <div class="shop-grid">
+        @for(item of coffeeService.dessertItems(); track item._id) {
+          <app-product-card
+            [product]="item"
+            (add)="cartService.addToCart($event)">
+          </app-product-card>
+        }
+      </div>
+  
+    </div>
+  
+    <aside class="cart-sidebar">
+  
+      <div class="cart-preview">
+  
+        <h3>Cart Summary</h3>
+  
+        <p>
+          Items: {{ cartService.cart().length }}
+        </p>
+  
+        <p>
+          Total: ₱{{ cartService.totalPrice() }}
+        </p>
+  
+        <a routerLink="/cart" class="view-cart-btn">
+          View Cart
+        </a>
+  
+      </div>
+  
+    </aside>
+  
+  </div>
