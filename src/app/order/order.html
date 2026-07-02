@@ -22,8 +22,8 @@
   
           <tr>
   
-            <td>
-              {{ order.orderNumber }}
+            <td class="order-number">
+              #{{ order.orderNumber }}
             </td>
   
             <td>
@@ -36,13 +36,13 @@
   
             <td>
   
-              <ul>
+              <ul class="items-list">
   
                 @for(item of order.items; track $index) {
   
                   <li>
                     {{ item.name }}
-                    - ₱{{ item.price }}
+                    <span>₱{{ item.price }}</span>
                   </li>
   
                 }
@@ -51,7 +51,7 @@
   
             </td>
   
-            <td>
+            <td class="total-price">
               ₱{{ order.total }}
             </td>
   
@@ -62,6 +62,7 @@
             <td>
   
               <select
+                class="status-select"
                 [value]="order.status"
                 (change)="updateStatus(order, $any($event.target).value)">
   
