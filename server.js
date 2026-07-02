@@ -13,13 +13,23 @@ mongoose.connect(process.env.MONGODB_URI || process.env.MONGODB_URI)
     .then(() => console.log('MongoDB Connected Successfully'))
     .catch(err => console.error('MongoDB Connection Error:', err));
 
-// User Model
-const User = mongoose.model('User', new mongoose.Schema({
-    username: String,
-    password: String,
-    role: String
-}));
-
+    const Order = mongoose.model('Order', new mongoose.Schema({
+        orderNumber: Number,
+        customerName: String,
+        contactNumber: String,
+        items: Array,
+        total: Number,
+    
+        status: {
+            type: String,
+            default: 'Pending'
+        },
+    
+        createdAt: {
+            type: Date,
+            default: Date.now
+        }
+    }));
 
 const Coffee = mongoose.model('Coffee', new mongoose.Schema({
     name: String,
@@ -75,6 +85,26 @@ app.put('/api/coffees/:id', async (req, res) => {
         });
     }
 });
+app.put('/api/orders/:id/status', async (req, res) => {
+    try {
+
+        const updatedOrder =
+            await Order.findByIdAndUpdate(
+                req.params.id,
+                { status: req.body.status },
+                { new: true }
+            );
+
+        res.send(updatedOrder);
+
+    } catch (error) {
+
+        res.status(500).send({
+            message: error.message
+        });
+
+    }
+});
 
 app.delete('/api/coffees/:id', async (req, res) => {
     try {
@@ -88,24 +118,48 @@ app.delete('/api/coffees/:id', async (req, res) => {
     }
 });
 
+app.post('/api/orders', async (req, res) => {
+    try {
 
-app.post('/api/login', async (req, res) => {
-    const user = await User.findOne({
-        username: req.body.username,
-        password: req.body.password
-    });
+        const lastOrder = await Order.findOne()
+            .sort({ orderNumber: -1 });
 
-    if (!user) {
-        return res.status(401).send({
-            message: 'Invalid username or password'
+        const nextOrderNumber =
+            lastOrder ? lastOrder.orderNumber + 1 : 1;
+
+        const order = new Order({
+            orderNumber: nextOrderNumber,
+            customerName: req.body.customerName,
+            contactNumber: req.body.contactNumber,
+            items: req.body.items,
+            total: req.body.total
+        });
+
+        await order.save();
+
+        res.status(201).send(order);
+
+    } catch (error) {
+        res.status(500).send({
+            message: error.message
         });
     }
-
-    res.send({
-        success: true,
-        role: user.role
-    });
 });
+app.get('/api/orders', async (req, res) => {
+    try {
+
+        const orders = await Order.find()
+            .sort({ orderNumber: -1 });
+
+        res.send(orders);
+
+    } catch (error) {
+        res.status(500).send({
+            message: error.message
+        });
+    }
+});
+
 
 
 app.listen(3000, () => {
