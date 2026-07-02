@@ -1,11 +1,25 @@
 <h2>Checkout</h2>
 
-<label>Customer Name</label>
-<input type="text">
+<form
+  [formGroup]="checkoutForm"
+  (ngSubmit)="placeOrder()">
 
-<label>Contact Number</label>
-<input type="text">
+  <label>Customer Name</label>
+  <input
+    type="text"
+    formControlName="customerName">
 
-<button>
-  Place Order
-</button>
+  <label>Contact Number</label>
+  <input
+    type="text"
+    formControlName="contactNumber">
+
+  <p>
+    Total: ₱{{ cartService.totalPrice() }}
+  </p>
+
+  <button type="submit">
+    Place Order
+  </button>
+
+</form>
