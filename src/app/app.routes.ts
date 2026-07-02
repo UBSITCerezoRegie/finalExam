@@ -4,7 +4,7 @@ import { Cart } from './cart/cart';
 import { Menu } from './menu/menu';
 import { Checkout } from './checkout/checkout';
 import { ManagerDashboard } from './manager-dashboard/manager-dashboard';
-import { OrderList } from './order-list/order-list';
+import { Orders } from './order/order';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
@@ -13,7 +13,7 @@ export const routes: Routes = [
 
   { path: 'checkout', component: Checkout },
   { path: 'manager-dashboard', component: ManagerDashboard },
-  { path: 'orders', component: OrderList },
+  { path: 'orders', component: Orders },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
