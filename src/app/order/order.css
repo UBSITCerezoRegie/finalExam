@@ -1,0 +1,115 @@
+.orders-container {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 30px;
+  
+    background: #fffaf5;
+    border-radius: 20px;
+  
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  }
+  
+  .orders-container h1 {
+    text-align: center;
+    color: #5c3d2e;
+    margin-bottom: 30px;
+  
+    font-size: 2.2rem;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+  
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  }
+  
+  thead {
+    background: #6f4e37;
+    color: white;
+  }
+  
+  th {
+    padding: 16px;
+    text-align: left;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+  }
+  
+  td {
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+  }
+  
+  tbody tr:hover {
+    background: #faf5ef;
+  }
+  
+  ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+  
+  li {
+    margin-bottom: 6px;
+    color: #555;
+  }
+  
+  td:nth-child(1) {
+    font-weight: bold;
+    color: #6f4e37;
+  }
+  
+  td:nth-child(5) {
+    font-weight: bold;
+    color: #c88a58;
+  }
+  
+  select {
+    padding: 8px 12px;
+  
+    border: 1px solid #d8c5b2;
+    border-radius: 8px;
+  
+    background: white;
+    color: #5c3d2e;
+  
+    cursor: pointer;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #6f4e37;
+  }
+  
+  .status-pending {
+    background: #fff4cc;
+    color: #856404;
+  }
+  
+  .status-preparing {
+    background: #d1ecf1;
+    color: #0c5460;
+  }
+  
+  .status-ready {
+    background: #d4edda;
+    color: #155724;
+  }
+  
+  @media (max-width: 900px) {
+  
+    .orders-container {
+      overflow-x: auto;
+    }
+  
+    table {
+      min-width: 1000px;
+    }
+  
+  }
