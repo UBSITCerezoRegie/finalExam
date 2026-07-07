@@ -15,7 +15,7 @@ export class Orders implements OnInit {
 
   orders = signal<any[]>([]);
 
-  private apiUrl = 'http://localhost:3000/api/orders';
+  private apiUrl = 'https://finalexam-api.onrender.com/api/coffees';
 
   ngOnInit() {
     this.fetchOrders();

@@ -34,7 +34,8 @@ export class Checkout {
     };
 
     this.http.post(
-      'http://localhost:3000/api/orders',
+      // comment out 'http://localhost:3000/api/orders',
+      private apiUrl = 'https://finalexam-api.onrender.com/api/coffees';
       orderData
     ).subscribe({
       next: (response) => {
