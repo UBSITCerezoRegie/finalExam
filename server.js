@@ -1,4 +1,7 @@
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -9,28 +12,28 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI || process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('MongoDB Connected Successfully'))
     .catch(err => console.error('MongoDB Connection Error:', err));
 
-    const Order = mongoose.model('Order', new mongoose.Schema({
-        orderNumber: Number,
-        customerName: String,
-        contactNumber: String,
-        items: Array,
-        total: Number,
-    
-        status: {
-            type: String,
-            default: 'Pending'
-        },
-    
-        createdAt: {
-            type: Date,
-            default: Date.now
-        }
-    }));
+// Order Model
+const Order = mongoose.model('Order', new mongoose.Schema({
+    orderNumber: Number,
+    customerName: String,
+    contactNumber: String,
+    items: Array,
+    total: Number,
+    status: {
+        type: String,
+        default: 'Pending'
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+}));
 
+// Coffee Model
 const Coffee = mongoose.model('Coffee', new mongoose.Schema({
     name: String,
     category: String,
@@ -39,7 +42,7 @@ const Coffee = mongoose.model('Coffee', new mongoose.Schema({
     image: String
 }));
 
-
+// Add Coffee
 app.post('/api/coffees', async (req, res) => {
     try {
         const item = new Coffee(req.body);
@@ -55,6 +58,7 @@ app.post('/api/coffees', async (req, res) => {
     }
 });
 
+// Get All Coffees
 app.get('/api/coffees', async (req, res) => {
     try {
         const menu = await Coffee.find();
@@ -69,7 +73,7 @@ app.get('/api/coffees', async (req, res) => {
     }
 });
 
-
+// Update Coffee
 app.put('/api/coffees/:id', async (req, res) => {
     try {
         const updatedCoffee = await Coffee.findByIdAndUpdate(
@@ -85,42 +89,22 @@ app.put('/api/coffees/:id', async (req, res) => {
         });
     }
 });
-app.put('/api/orders/:id/status', async (req, res) => {
+
+// Delete Coffee
+app.delete('/api/orders/:id', async (req, res) => {
     try {
-
-        const updatedOrder =
-            await Order.findByIdAndUpdate(
-                req.params.id,
-                { status: req.body.status },
-                { new: true }
-            );
-
-        res.send(updatedOrder);
-
+        await Order.findByIdAndDelete(req.params.id);
+        res.status(204).send();
     } catch (error) {
-
         res.status(500).send({
             message: error.message
         });
-
     }
 });
 
-app.delete('/api/coffees/:id', async (req, res) => {
-    try {
-        await Coffee.findByIdAndDelete(req.params.id);
-
-        res.status(204).send();
-    } catch (error) {
-        res.status(400).send({
-            message: error.message
-        });
-    }
-});
-
+// Create Order
 app.post('/api/orders', async (req, res) => {
     try {
-
         const lastOrder = await Order.findOne()
             .sort({ orderNumber: -1 });
 
@@ -138,21 +122,37 @@ app.post('/api/orders', async (req, res) => {
         await order.save();
 
         res.status(201).send(order);
-
     } catch (error) {
         res.status(500).send({
             message: error.message
         });
     }
 });
+
+// Get All Orders
 app.get('/api/orders', async (req, res) => {
     try {
-
         const orders = await Order.find()
             .sort({ orderNumber: -1 });
 
         res.send(orders);
+    } catch (error) {
+        res.status(500).send({
+            message: error.message
+        });
+    }
+});
 
+// Update Order Status
+app.put('/api/orders/:id/status', async (req, res) => {
+    try {
+        const updatedOrder = await Order.findByIdAndUpdate(
+            req.params.id,
+            { status: req.body.status },
+            { new: true }
+        );
+
+        res.send(updatedOrder);
     } catch (error) {
         res.status(500).send({
             message: error.message
@@ -161,7 +161,7 @@ app.get('/api/orders', async (req, res) => {
 });
 
 
-
+// // Start Server
 app.listen(3000, () => {
     console.log('Coffee Shop API is running on port 3000');
 });

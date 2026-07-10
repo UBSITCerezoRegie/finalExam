@@ -15,7 +15,8 @@ export class Orders implements OnInit {
 
   orders = signal<any[]>([]);
 
-  private apiUrl = 'http://localhost:3000/api/orders';
+  // Render Backend
+  private apiUrl = 'https://finalexam-api.onrender.com/api/orders';
 
   ngOnInit() {
     this.fetchOrders();
@@ -32,8 +33,19 @@ export class Orders implements OnInit {
     this.http.put(
       `${this.apiUrl}/${order._id}/status`,
       { status }
-    )
-    .subscribe(() => {
+    ).subscribe(() => {
+      this.fetchOrders();
+    });
+
+  }
+
+  deleteOrder(id: string) {
+
+    if (!confirm('Delete this order?')) return;
+
+    this.http.delete(
+      `${this.apiUrl}/${id}`
+    ).subscribe(() => {
       this.fetchOrders();
     });
 
