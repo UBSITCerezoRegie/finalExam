@@ -7,8 +7,8 @@ import { HttpClient } from '@angular/common/http';
 export class CoffeeService {
   private http = inject(HttpClient);
 
-  private apiUrl = 'http://localhost:3000/api/coffees';
-
+  // comment outprivate apiUrl = 'http://localhost:3000/api/coffees';
+  private apiUrl = 'https://finalexam-api.onrender.com/api/coffees';
   // Reactive state management using signals
   coffeeList = signal<any[]>([]);
   breakfastItems = computed(() =>

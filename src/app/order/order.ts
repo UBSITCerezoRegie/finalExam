@@ -15,7 +15,7 @@ export class Orders implements OnInit {
 
   orders = signal<any[]>([]);
 
-  // Render Backend
+
   private apiUrl = 'https://finalexam-api.onrender.com/api/orders';
 
   ngOnInit() {

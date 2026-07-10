@@ -15,6 +15,8 @@ export class Checkout {
   private fb = inject(FormBuilder);
   private http = inject(HttpClient);
 
+  private apiUrl = 'https://finalexam-api.onrender.com/api/orders';
+
   cartService = inject(CartService);
 
   checkoutForm = this.fb.group({
@@ -34,7 +36,7 @@ export class Checkout {
     };
 
     this.http.post(
-      'http://localhost:3000/api/orders',
+      this.apiUrl,
       orderData
     ).subscribe({
       next: (response) => {
