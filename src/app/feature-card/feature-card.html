@@ -1,0 +1,22 @@
+<div class="feature-card">
+
+    <img
+        [src]="image"
+        [alt]="title">
+
+    <div class="overlay">
+
+        <h2>{{ title }}</h2>
+
+        <a
+            [routerLink]="['/menu']"
+            [queryParams]="{ category: category }"
+            class="menu-btn">
+
+            View Menu
+
+        </a>
+
+    </div>
+
+</div>
