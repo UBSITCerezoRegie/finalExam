@@ -134,9 +134,27 @@
 /* Phones — full-width drop-down from above */
 @media (max-width: 600px) {
 
+  .navbar {
+    height: 64px;                /* NEW — shorter bar on mobile, was inheriting 80px from desktop */
+  }
+
+  .nav-container {
+    padding: 0 20px;              /* NEW — tighter side padding to match the smaller bar */
+  }
+
+  .logo {
+    font-size: 1.3rem;            /* NEW — scaled down from 1.7rem so it doesn't dominate the bar */
+    letter-spacing: 0.3px;        /* NEW — slightly tightened, large letter-spacing reads odd at smaller sizes */
+  }
+
+  .nav-toggle {
+    width: 24px;                  /* CHANGED — was 28px, scaled to match the smaller bar */
+    height: 17px;                 /* CHANGED — was 20px, keeps the same proportions */
+  }
+
   .nav-links {
     position: fixed;
-    top: 80px;
+    top: 64px;                    /* CHANGED — was 80px, must match new .navbar height above */
     left: 0;
     right: 0;
 
@@ -150,7 +168,7 @@
 
     padding: 0 24px;
     flex-direction: column;
-    align-items: center;        /* NEW — centers each <li> horizontally in the dropdown */
+    align-items: stretch;
     gap: 0;
 
     background: #ffffff;
@@ -168,7 +186,8 @@
   }
 
   .nav-links li {
-    text-align: center;         /* NEW — centers the text inside each <li>, backs up align-items */
+    width: 100%;
+    text-align: center;
     margin-bottom: 20px;
   }
 
@@ -177,7 +196,9 @@
   }
 
   .nav-links a {
-    font-size: 1.3rem;          /* NEW — bumps link text up from the base 1.1rem, phones only */
+    display: block;
+    width: 100%;
+    font-size: 1.5rem;
   }
 
 }
