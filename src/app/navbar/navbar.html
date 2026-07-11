@@ -1,16 +1,22 @@
 <nav class="navbar">
     <div class="nav-container">
   
-      <div class="logo">
+      <div class="logo" routerLink="/home" style="cursor: pointer;">
         Cafe by the Ruins
       </div>
   
-      <ul class="nav-links">
-        <li><a routerLink="/home" routerLinkActive="active-link">Home</a></li>
-        <li><a routerLink="/menu" routerLinkActive="active-link">Menu</a></li>
-        <li><a routerLink="/cart" routerLinkActive="active-link">Cart</a></li>
+      <ul class="nav-links" [class.open]="menuOpen">
+        <li><a routerLink="/home" routerLinkActive="active-link" (click)="menuOpen = false">Home</a></li>
+        <li><a routerLink="/menu" routerLinkActive="active-link" (click)="menuOpen = false">Menu</a></li>
+        <li><a routerLink="/cart" routerLinkActive="active-link" (click)="menuOpen = false">Cart</a></li>
 
       </ul>
+
+      <button class="nav-toggle" [class.open]="menuOpen" (click)="menuOpen = !menuOpen" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
   
     </div>
   </nav>

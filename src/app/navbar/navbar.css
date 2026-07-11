@@ -53,3 +53,131 @@
   color: #8b5e3c;
   font-weight: 700;
 }
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 110;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2.5px;
+  width: 100%;
+
+  background: #1f1f1f;
+  border-radius: 2px;
+
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* Tablets — side drawer */
+@media (max-width: 900px) {
+
+  .nav-container {
+    padding: 0 24px;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    right: 0;
+
+    height: calc(100vh - 80px);
+    width: 240px;
+    background: #ffffff;
+    border-left: 1px solid #e8e8e8;
+
+    flex-direction: column;
+    gap: 0;
+    padding: 40px 30px;
+
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+
+    z-index: 200;
+  }
+
+  .nav-links.open {
+    transform: translateX(0);
+  }
+
+  .nav-links li {
+    margin-bottom: 28px;
+  }
+
+}
+
+/* Phones — full-width drop-down from above */
+@media (max-width: 600px) {
+
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: auto;
+    max-height: 0;
+    overflow: hidden;
+
+    border-left: none;
+    border-bottom: 1px solid #e8e8e8;
+
+    padding: 0 24px;
+    flex-direction: column;
+    align-items: center;        /* NEW — centers each <li> horizontally in the dropdown */
+    gap: 0;
+
+    background: #ffffff;
+    transform: none;
+    opacity: 0;
+
+    z-index: 200;
+    transition: max-height 0.35s ease, opacity 0.25s ease, padding 0.35s ease;
+  }
+
+  .nav-links.open {
+    max-height: 400px;
+    opacity: 1;
+    padding: 20px 24px;
+  }
+
+  .nav-links li {
+    text-align: center;         /* NEW — centers the text inside each <li>, backs up align-items */
+    margin-bottom: 20px;
+  }
+
+  .nav-links li:last-child {
+    margin-bottom: 0;
+  }
+
+  .nav-links a {
+    font-size: 1.3rem;          /* NEW — bumps link text up from the base 1.1rem, phones only */
+  }
+
+}
