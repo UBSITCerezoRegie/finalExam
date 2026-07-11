@@ -135,26 +135,28 @@
 @media (max-width: 600px) {
 
   .navbar {
-    height: 64px;                /* NEW — shorter bar on mobile, was inheriting 80px from desktop */
+    height: 64px;
   }
 
   .nav-container {
-    padding: 0 20px;              /* NEW — tighter side padding to match the smaller bar */
+    padding: 0 20px;
   }
 
   .logo {
-    font-size: 1.3rem;            /* NEW — scaled down from 1.7rem so it doesn't dominate the bar */
-    letter-spacing: 0.3px;        /* NEW — slightly tightened, large letter-spacing reads odd at smaller sizes */
+    font-size: 1.3rem;
+    letter-spacing: 0.3px;
   }
 
   .nav-toggle {
-    width: 24px;                  /* CHANGED — was 28px, scaled to match the smaller bar */
-    height: 17px;                 /* CHANGED — was 20px, keeps the same proportions */
+    width: 24px;
+    height: 17px;
   }
 
   .nav-links {
+    box-sizing: border-box;       /* NEW — forces padding to be counted INSIDE the width, not added on top */
+
     position: fixed;
-    top: 64px;                    /* CHANGED — was 80px, must match new .navbar height above */
+    top: 64px;
     left: 0;
     right: 0;
 
@@ -186,6 +188,7 @@
   }
 
   .nav-links li {
+    box-sizing: border-box;       /* NEW — same fix, applied to each list item too */
     width: 100%;
     text-align: center;
     margin-bottom: 20px;
