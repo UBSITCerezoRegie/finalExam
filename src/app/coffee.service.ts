@@ -1,14 +1,16 @@
 import { Injectable, inject, signal ,computed} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { environment } from '../environments/environment';
 @Injectable({
   providedIn: 'root',
 })
+
 export class CoffeeService {
   private http = inject(HttpClient);
 
-  // comment outprivate apiUrl = 'http://localhost:3000/api/coffees';
-  private apiUrl = 'https://finalexam-api.onrender.com/api/coffees';
+  private apiUrl = `${environment.apiUrl}/coffees`;
+
+  
   // Reactive state management using signals
   coffeeList = signal<any[]>([]);
   breakfastItems = computed(() =>

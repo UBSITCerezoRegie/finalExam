@@ -3,6 +3,8 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+// Use absolute path to environments to avoid module resolution issues
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-manager-login',
   standalone: true,
@@ -27,7 +29,7 @@ private http = inject(HttpClient);
     const username = this.loginForm.value.username;
     const password = this.loginForm.value.password;
 this.http.post(
-  'https://finalexam-api.onrender.com/api/login',
+  `${environment.apiUrl}/login`,
   {
     username,
     password

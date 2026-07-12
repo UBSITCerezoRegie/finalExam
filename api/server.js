@@ -58,25 +58,21 @@ app.post('/api/coffees', async (req, res) => {
     }
 });
 app.post('/api/login', (req, res) => {
-
     const { username, password } = req.body;
 
     if (
         username === process.env.MANAGER_USERNAME &&
         password === process.env.MANAGER_PASSWORD
     ) {
-
         return res.status(200).json({
             success: true
         });
-
     }
 
     return res.status(401).json({
         success: false,
         message: 'Invalid username or password'
     });
-
 });
 // Get All Coffees
 app.get('/api/coffees', async (req, res) => {

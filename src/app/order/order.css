@@ -2,31 +2,21 @@
   max-width: 1400px;
   margin: 40px auto;
   padding: 30px;
-<<<<<<< Updated upstream
 
   background: #fffaf5;
   border-radius: 20px;
 
-=======
-  background: #fdfaf6;
-  border-radius: 20px;
->>>>>>> Stashed changes
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .orders-container h1 {
   text-align: center;
   margin-bottom: 30px;
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
   color: #5c3d2e;
   font-size: 2.3rem;
   font-weight: 700;
 }
 
-<<<<<<< Updated upstream
 .orders-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -77,35 +67,6 @@
   letter-spacing: 0.3px;
 }
 
-=======
-/* Grid Layout for Cards */
-.orders-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
-}
-
-/* Single Order Card Definition */
-.order-card {
-  background: white;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  border: 1px solid #f0e6db;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* Order # Style */
-.order-number {
-  font-weight: 700;
-  color: #a1785e;
-  font-size: 1.1rem;
-}
-
-/* Customer Section */
->>>>>>> Stashed changes
 .customer-info {
   display: flex;
   flex-direction: column;
@@ -114,7 +75,6 @@
 
 .customer-name {
   font-weight: 600;
-<<<<<<< Updated upstream
   color: #333;
   font-size: 1.05rem;
 }
@@ -147,36 +107,6 @@
 
   color: #555;
   font-size: 0.92rem;
-=======
-  font-size: 1.15rem;
-  color: #333;
-}
-
-.contact-number {
-  color: #666;
-  font-size: 0.95rem;
-}
-
-/* Items Section & Rows */
-.items-section {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 8px 0;
-  border-top: 1px dashed #f0e6db;
-  border-bottom: 1px dashed #f0e6db;
-}
-
-.item-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1rem;
-}
-
-.item-name {
-  color: #555;
->>>>>>> Stashed changes
 }
 
 .item-price {
@@ -184,7 +114,6 @@
   color: #6f4e37;
 }
 
-<<<<<<< Updated upstream
 .card-footer {
   display: flex;
   flex-direction: column;
@@ -211,42 +140,9 @@
 
   background: white;
   color: #5c3d2e;
-
-=======
-/* Total Price Display */
-.total-price {
-  font-weight: 700;
-  color: #c88a58;
-  font-size: 1.3rem;
 }
 
-/* Date Display */
-.date-section {
-  color: #888;
-  font-size: 0.85rem;
-  line-height: 1.4;
-}
-
-/* Actions Layout */
-.action-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: auto; /* Pushes action section to card bottom */
-  padding-top: 12px;
-}
-
-/* Dropdown Menu styling */
-.status-select {
-  padding: 10px 14px;
-  border: 1px solid #d8c5b2;
-  border-radius: 8px;
-  background: white;
-  color: #5c3d2e;
-  font-size: 0.9rem;
-  font-weight: 600;
->>>>>>> Stashed changes
-  cursor: pointer;
+  .status-select{cursor: pointer;
   transition: 0.2s ease;
 }
 
@@ -255,7 +151,6 @@
   border-color: #6f4e37;
 }
 
-<<<<<<< Updated upstream
 .status-select:hover {
   border-color: #6f4e37;
 }
@@ -321,29 +216,3 @@
   }
 
 }
-=======
-/* Minimalist Trash Icon Button */
-.delete-icon-btn {
-  background: none;
-  border: none;
-  font-size: 1.3rem;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  opacity: 0.6;
-}
-
-.delete-icon-btn:hover {
-  opacity: 1;
-  background-color: #fff1f0;
-  transform: scale(1.1);
-}
-
-.delete-icon-btn:active {
-  transform: scale(0.95);
-}
->>>>>>> Stashed changes
