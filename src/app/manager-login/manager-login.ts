@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-manager-login',
   standalone: true,
@@ -14,7 +14,7 @@ export class ManagerLogin {
 
   private fb = inject(FormBuilder);
   private router = inject(Router);
-
+private http = inject(HttpClient);
   error = signal(false);
 
   loginForm = this.fb.group({
