@@ -2,65 +2,48 @@
 
   <h1>Customer Orders</h1>
 
-  <table>
+  <div class="orders-grid">
 
-    <thead>
-      <tr>
-        <th>Order #</th>
-        <th>Customer</th>
-        <th>Contact</th>
-        <th>Items Ordered</th>
-        <th>Total</th>
-        <th>Date Ordered</th>
-        <th>Status</th>
-        <th>Action</th>
-      </tr>
-    </thead>
+    @for(order of orders(); track order._id) {
 
-    <tbody>
+    <div class="order-card">
 
-      @for(order of orders(); track order._id) {
+      <div class="card-header">
 
-      <tr>
+        <span class="order-number">#{{ order.orderNumber }}</span>
 
-        <td class="order-number">
-          #{{ order.orderNumber }}
-        </td>
+        <span [class]="'status-badge status-' + order.status.toLowerCase()">
+          {{ order.status }}
+        </span>
 
-        <td>
-          {{ order.customerName }}
-        </td>
+      </div>
 
-        <td>
-          {{ order.contactNumber }}
-        </td>
+      <div class="customer-info">
 
-        <td>
+        <p class="customer-name">{{ order.customerName }}</p>
+        <p class="customer-contact">{{ order.contactNumber }}</p>
+        <p class="order-date">{{ order.createdAt | date:'medium' }}</p>
 
-          <ul class="items-list">
+      </div>
 
-            @for(item of order.items; track $index) {
+      <ul class="items-list">
 
-            <li>
-              {{ item.name }}
-              <span>₱{{ item.price }}</span>
-            </li>
+        @for(item of order.items; track $index) {
 
-            }
+        <li>
+          <span class="item-name">{{ item.name }}</span>
+          <span class="item-price">₱{{ item.price }}</span>
+        </li>
 
-          </ul>
+        }
 
-        </td>
+      </ul>
 
-        <td class="total-price">
-          ₱{{ order.total }}
-        </td>
+      <div class="card-footer">
 
-        <td>
-          {{ order.createdAt | date:'medium' }}
-        </td>
+        <span class="total-price">Total: ₱{{ order.total }}</span>
 
-        <td>
+        <div class="card-actions">
 
           <select
             class="status-select"
@@ -75,24 +58,20 @@
 
           </select>
 
-        </td>
-
-        <td>
-
           <button
             class="delete-btn"
             (click)="deleteOrder(order._id)">
             Delete
           </button>
 
-        </td>
+        </div>
 
-      </tr>
+      </div>
 
-      }
+    </div>
 
-    </tbody>
+    }
 
-  </table>
+  </div>
 
 </div>
