@@ -57,7 +57,20 @@ app.post('/api/coffees', async (req, res) => {
         });
     }
 });
+app.post('/api/login', (req, res) => {
 
+  const { username, password } = req.body;
+
+  if (
+    username === process.env.MANAGER_USERNAME &&
+    password === process.env.MANAGER_PASSWORD
+  ) {
+    return res.send({ success: true });
+  }
+
+  res.status(401).send({ success: false });
+
+});
 // Get All Coffees
 app.get('/api/coffees', async (req, res) => {
     try {

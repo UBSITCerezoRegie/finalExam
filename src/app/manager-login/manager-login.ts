@@ -26,21 +26,21 @@ export class ManagerLogin {
 
     const username = this.loginForm.value.username;
     const password = this.loginForm.value.password;
-
-    if (
-      username === 'admin' &&
-      password === '1234'
-    ) {
-
-      localStorage.setItem('managerLoggedIn', 'true');
-
-      this.router.navigate(['/manager-dashboard']);
-
-    } else {
-
-      this.error.set(true);
-
-    }
+this.http.post(
+  'https://finalexam-api.onrender.com/api/login',
+  {
+    username,
+    password
+  }
+).subscribe({
+  next: () => {
+    localStorage.setItem('managerLoggedIn', 'true');
+    this.router.navigate(['/manager-dashboard']);
+  },
+  error: () => {
+    this.error.set(true);
+  }
+});
 
   }
 
