@@ -5,6 +5,8 @@ import { Menu } from './menu/menu';
 import { Checkout } from './checkout/checkout';
 import { ManagerDashboard } from './manager-dashboard/manager-dashboard';
 import { Orders } from './order/order';
+import { ManagerLogin } from './manager-login/manager-login';
+import { managerGuard } from './auth/manager-guard';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
@@ -12,8 +14,11 @@ export const routes: Routes = [
   { path: 'cart', component: Cart },
 
   { path: 'checkout', component: Checkout },
-  { path: 'manager-dashboard', component: ManagerDashboard },
-  { path: 'orders', component: Orders },
+  { path: 'manager-dashboard', component: ManagerDashboard       ,canActivate: [managerGuard]},
+  { path: 'orders', component: Orders       ,canActivate: [managerGuard]},
+    { path: 'manager-login', component: ManagerLogin
+     },
+
 
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
