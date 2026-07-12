@@ -10,7 +10,9 @@
 
       <div class="card-header">
 
-        <span class="order-number">#{{ order.orderNumber }}</span>
+        <span class="order-number">
+          #{{ order.orderNumber }}
+        </span>
 
         <span [class]="'status-badge status-' + order.status.toLowerCase()">
           {{ order.status }}
@@ -20,9 +22,17 @@
 
       <div class="customer-info">
 
-        <p class="customer-name">{{ order.customerName }}</p>
-        <p class="customer-contact">{{ order.contactNumber }}</p>
-        <p class="order-date">{{ order.createdAt | date:'medium' }}</p>
+        <p class="customer-name">
+          {{ order.customerName }}
+        </p>
+
+        <p class="customer-contact">
+          {{ order.contactNumber }}
+        </p>
+
+        <p class="order-date">
+          {{ order.createdAt | date:'medium' }}
+        </p>
 
       </div>
 
@@ -41,7 +51,9 @@
 
       <div class="card-footer">
 
-        <span class="total-price">Total: ₱{{ order.total }}</span>
+        <span class="total-price">
+          Total: ₱{{ order.total }}
+        </span>
 
         <div class="card-actions">
 
