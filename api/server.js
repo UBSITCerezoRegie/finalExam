@@ -63,11 +63,16 @@ app.post('/api/coffees', async (req, res) => {
 app.post('/api/login', (req, res) => {
     const { username, password } = req.body;
 
-    console.log({
-        receivedUsername: JSON.stringify(username),
-        receivedPassword: JSON.stringify(password),
-        envUsername: JSON.stringify(process.env.MANAGER_USERNAME),
-        envPassword: JSON.stringify(process.env.MANAGER_PASSWORD),
+    console.log('Request body:', req.body);
+
+    console.log('Environment:', {
+        MANAGER_USERNAME: process.env.MANAGER_USERNAME,
+        MANAGER_PASSWORD: process.env.MANAGER_PASSWORD
+    });
+
+    console.log('Comparison:', {
+        usernameMatches: username === process.env.MANAGER_USERNAME,
+        passwordMatches: password === process.env.MANAGER_PASSWORD
     });
 
     if (
