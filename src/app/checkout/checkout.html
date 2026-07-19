@@ -1,9 +1,8 @@
-
 <form
   [formGroup]="checkoutForm"
   (ngSubmit)="placeOrder()">
-  <h2>Checkout</h2>
 
+  <h2>Checkout</h2>
 
   <label>Customer Name</label>
   <input
@@ -19,8 +18,18 @@
     Total: ₱{{ cartService.totalPrice() }}
   </p>
 
-  <button type="submit">
-    Place Order
+  @if (loading()) {
+    <p class="loading-message">
+      ☕ Please wait while we place your order...
+    </p>
+  }
+
+  <button
+    type="submit"
+    [disabled]="loading()">
+
+    {{ loading() ? 'Placing Order...' : 'Place Order' }}
+
   </button>
 
 </form>

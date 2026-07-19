@@ -1,3 +1,15 @@
+@if (coffeeService.loading()) {
+
+    <app-loading
+        message="Loading menu...">
+    </app-loading>
+
+} @else {
+
+    <!-- Existing menu -->
+
+} {
+
 <div class="menu-layout">
 
     <div class="menu-content">
@@ -102,3 +114,4 @@
     </aside>
   
   </div>
+}

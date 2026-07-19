@@ -2,12 +2,13 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { environment } from '../../environments/environment';
+import { Loading } from '../loading/loading';
 
 
 @Component({
   selector: 'app-orders',
   standalone: true,
-  imports: [DatePipe],
+  imports: [DatePipe, Loading],
   templateUrl: './order.html',
   styleUrl: './order.css'
 })

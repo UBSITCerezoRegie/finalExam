@@ -7,10 +7,11 @@ import {
 } from '@angular/forms';
 
 import { CoffeeService } from '../coffee.service';
+import { Loading } from '../loading/loading';
 @Component({
   selector: 'app-manager-dashboard',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, Loading],
   templateUrl: 'manager-dashboard.html',
   styleUrl: 'manager-dashboard.css',
   changeDetection: ChangeDetectionStrategy.OnPush

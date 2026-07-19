@@ -41,11 +41,12 @@ fetchCoffee() {
   this.loading.set(true);
 
   this.http.get<any[]>(this.apiUrl).subscribe({
-    next: data => {
+    next: (data) => {
       this.coffeeList.set(data);
       this.loading.set(false);
     },
-    error: () => {
+    error: (err) => {
+      console.error('Failed to fetch coffees', err);
       this.loading.set(false);
     }
   });

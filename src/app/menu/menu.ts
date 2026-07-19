@@ -3,10 +3,10 @@ import { CartService } from '../cart-service';
 import { CoffeeService } from '../coffee.service';
 import { ProductCard } from '../product-card/product-card';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-
+import {Loading} from '../loading/loading';
 @Component({
   selector: 'app-menu',
-  imports: [ProductCard, RouterLink],
+  imports: [ProductCard, RouterLink, Loading],
   templateUrl: './menu.html',
   styleUrl: './menu.css',
 })

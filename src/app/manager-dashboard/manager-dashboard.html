@@ -1,8 +1,8 @@
 @if (CoffeeService.loading()) {
 
-  <div class="loading">
-    <i class="fa-solid fa-mug-hot"></i>Loading menu...
-  </div>
+    <app-loading
+        message="Loading menu...">
+    </app-loading>
 
 } @else {
 
@@ -268,4 +268,4 @@
   </aside>
 
 </div>
-}
+ }

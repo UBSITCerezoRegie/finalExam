@@ -1,3 +1,10 @@
+@if (loading()) {
+
+    <app-loading
+        message="Loading orders...">
+    </app-loading>
+
+} @else {
 <div class="orders-container">
 
   <h1>Customer Orders</h1>
@@ -87,3 +94,4 @@
   </div>
 
 </div>
+}
