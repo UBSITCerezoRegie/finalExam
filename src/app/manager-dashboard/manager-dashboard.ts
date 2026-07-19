@@ -48,7 +48,7 @@ deleteCoffee(id: string) {
 
   this.CoffeeService.deleteCoffee(id).subscribe({
     next: () => {
-      this.CoffeeService.fetchCoffee();
+      this.CoffeeService.removeCoffeeFromList(id);
     },
     error: (err) => {
       console.error('Delete failed!', err);

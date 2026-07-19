@@ -59,6 +59,12 @@ deleteCoffee(id: string) {
   return this.http.delete(`${this.apiUrl}/${id}`);
 }
 
+removeCoffeeFromList(id: string) {
+  this.coffeeList.update(list =>
+    list.filter(coffee => coffee._id !== id)
+  );
+}
+
   updateCoffee(id: string, data: any) {
     return this.http.put(`${this.apiUrl}/${id}`, data);
   }
