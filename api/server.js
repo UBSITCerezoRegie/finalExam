@@ -123,7 +123,7 @@ app.put('/api/coffees/:id', async (req, res) => {
 });
 
 // Delete Coffee
-app.delete('/api/orders/:id', async (req, res) => {
+app.delete('/api/coffees/:id', async (req, res) => {
     try {
         await Order.findByIdAndDelete(req.params.id);
         res.status(204).send();
