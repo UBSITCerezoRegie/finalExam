@@ -1,6 +1,8 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { environment } from '../../environments/environment';
+
 
 @Component({
   selector: 'app-orders',
@@ -16,7 +18,7 @@ export class Orders implements OnInit {
   orders = signal<any[]>([]);
 
 
-  private apiUrl = 'https://finalexam-api.onrender.com/api/orders';
+  private apiUrl = `${environment.apiUrl}/orders`;
 
   ngOnInit() {
     this.fetchOrders();

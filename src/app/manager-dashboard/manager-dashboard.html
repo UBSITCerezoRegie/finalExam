@@ -1,4 +1,21 @@
+@if (CoffeeService.loading()) {
+
+  <div class="loading">
+    <i class="fa-solid fa-mug-hot"></i>Loading menu...
+  </div>
+
+} @else {
+
 <div class="dashboard-container">
+  <div class="dashboard-header">
+  <h1>Manager Dashboard</h1>
+
+  <button
+    class="btn-logout"
+    (click)="logout()">
+    Logout
+  </button>
+</div>
 
   <section class="dashboard-menu">
 
@@ -251,3 +268,4 @@
   </aside>
 
 </div>
+}

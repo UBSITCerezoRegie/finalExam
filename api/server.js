@@ -133,7 +133,16 @@ app.delete('/api/coffees/:id', async (req, res) => {
         });
     }
 });
-
+app.delete('/api/orders/:id', async (req, res) => {
+    try {
+        await Order.findByIdAndDelete(req.params.id);
+        res.status(204).send();
+    } catch (error) {
+        res.status(500).send({
+            message: error.message
+        });
+    }
+});
 // Create Order
 app.post('/api/orders', async (req, res) => {
     try {

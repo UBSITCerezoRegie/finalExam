@@ -1,7 +1,7 @@
 import {
   ChangeDetectionStrategy, Component, inject, signal, OnInit
 } from '@angular/core';
-
+import { Router } from '@angular/router';
 import {
   FormBuilder, ReactiveFormsModule,  Validators
 } from '@angular/forms';
@@ -19,12 +19,16 @@ export class ManagerDashboard implements OnInit {
   
 
   private formBuilder = inject(FormBuilder);
-
+  private router = inject(Router);
   CoffeeService = inject(CoffeeService);
 
   editingId = signal<string | null>(null);
 
- 
+ logout() {
+  localStorage.removeItem('managerLoggedIn');
+  this.router.navigate(['/manager-login']);
+}
+
   CoffeeForm = this.formBuilder.nonNullable.group({
     name: ['', Validators.required],
     category: ['', Validators.required],
@@ -37,13 +41,20 @@ export class ManagerDashboard implements OnInit {
     this.CoffeeService.fetchCoffee();
   }
 
-  deleteCoffee(id: string) {
-    if (confirm('Are you sure you want to delete this Coffee?')) {
-      this.CoffeeService.deleteCoffee(id);
-    }
-
-    this.CoffeeService.fetchCoffee();
+deleteCoffee(id: string) {
+  if (!confirm('Are you sure you want to delete this coffee?')) {
+    return;
   }
+
+  this.CoffeeService.deleteCoffee(id).subscribe({
+    next: () => {
+      this.CoffeeService.fetchCoffee();
+    },
+    error: (err) => {
+      console.error('Delete failed!', err);
+    }
+  });
+}
 
   startEdit(Coffee: any) {
     this.editingId.set(Coffee._id);

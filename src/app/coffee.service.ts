@@ -13,6 +13,7 @@ export class CoffeeService {
   
   // Reactive state management using signals
   coffeeList = signal<any[]>([]);
+loading = signal(false);
   breakfastItems = computed(() =>
     this.coffeeList().filter(item => item.category === 'breakfast')
   );
@@ -36,25 +37,27 @@ export class CoffeeService {
   dessertItems = computed(() =>
     this.coffeeList().filter(item => item.category === 'dessert')
   );
-  fetchCoffee() {
-    this.http
-      .get<any[]>(this.apiUrl)
-      .subscribe(data => this.coffeeList.set(data));
-  }
+fetchCoffee() {
+  this.loading.set(true);
+
+  this.http.get<any[]>(this.apiUrl).subscribe({
+    next: data => {
+      this.coffeeList.set(data);
+      this.loading.set(false);
+    },
+    error: () => {
+      this.loading.set(false);
+    }
+  });
+}
 
   saveCoffee(data: any) {
     return this.http.post(this.apiUrl, data);
   }
 
-  deleteCoffee(id: string) {
-    return this.http
-      .delete(`${this.apiUrl}/${id}`)
-      .subscribe(() =>
-        this.coffeeList.update(list =>
-          list.filter(coffee => coffee._id !== id)
-        )
-      );
-  }
+deleteCoffee(id: string) {
+  return this.http.delete(`${this.apiUrl}/${id}`);
+}
 
   updateCoffee(id: string, data: any) {
     return this.http.put(`${this.apiUrl}/${id}`, data);
