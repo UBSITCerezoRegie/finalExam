@@ -3,8 +3,11 @@ dns.setServers(['8.8.8.8', '8.8.4.4']);
 require('dotenv').config();
 
 // Log environment variables for debugging
-console.log('MANAGER_USERNAME:', process.env.MANAGER_USERNAME);
-console.log('MANAGER_PASSWORD:', process.env.MANAGER_PASSWORD);
+//console.log('MANAGER_USERNAME:', process.env.MANAGER_USERNAME);
+//console.log('MANAGER_PASSWORD:', process.env.MANAGER_PASSWORD);
+console.log('===== ENVIRONMENT VARIABLES =====');
+console.log(Object.keys(process.env).sort());
+console.log('=================================');
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
