@@ -12,8 +12,9 @@ export class CoffeeService {
 
   
   // Reactive state management using signals
-  coffeeList = signal<any[]>([]);
-loading = signal(false);
+coffeeList = signal<any[]>([]);
+loading = signal(true);
+loadError = signal(false);
   breakfastItems = computed(() =>
     this.coffeeList().filter(item => item.category === 'breakfast')
   );
@@ -39,6 +40,7 @@ loading = signal(false);
   );
 fetchCoffee() {
   this.loading.set(true);
+  this.loadError.set(false);
 
   this.http.get<any[]>(this.apiUrl).subscribe({
     next: (data) => {
@@ -47,6 +49,8 @@ fetchCoffee() {
     },
     error: (err) => {
       console.error('Failed to fetch coffees', err);
+
+      this.loadError.set(true);
       this.loading.set(false);
     }
   });

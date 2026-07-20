@@ -1,14 +1,15 @@
 @if (coffeeService.loading()) {
 
-    <app-loading
-        message="Loading menu...">
-    </app-loading>
+  <app-loading message="Loading menu..." />
 
-} @else {
+} @else if (coffeeService.loadError()) {
 
-    <!-- Existing menu -->
+  <p>Unable to load the menu. Please try again.</p>
+  <button (click)="coffeeService.fetchCoffee()">Retry</button>
+} @else{
 
-} {
+
+
 
 <div class="menu-layout">
 

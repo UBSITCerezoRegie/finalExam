@@ -23,6 +23,7 @@ export class Checkout {
 
   loading = signal(false);
 
+
   checkoutForm = this.fb.group({
     customerName: ['', Validators.required],
     contactNumber: ['', Validators.required]

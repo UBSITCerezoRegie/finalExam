@@ -17,6 +17,7 @@ export class Menu implements OnInit {
   private route = inject(ActivatedRoute);
 
   ngOnInit() {
+    console.log('Menu ngOnInit');
     this.coffeeService.fetchCoffee();
 
     this.route.queryParams.subscribe(params => {
